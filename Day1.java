@@ -18,9 +18,12 @@ public class Day1 {
         Collections.sort(listTwo);
         System.out.println(listOne);
         System.out.println(listTwo);
+        int total = 0;
         for(int i = 0; i<fileData.size(); i++){
-
+            int line = Math.abs(listOne.get(i) - listTwo.get(i));
+            total+=line;
         }
+        System.out.println(total);
     }
 
 
