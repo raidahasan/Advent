@@ -26,7 +26,7 @@ public class Day4 {
 //                }
 //        }
         for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length-3; c++) {
+            for (int c = 0; c < grid[0].length; c++) {
                 // get the letter at this position
                 String letter = grid[r][c];
                 // if that letter is an X
@@ -34,11 +34,11 @@ public class Day4 {
 
                 //right
                 if(letter.equals("X")){
-                    if(grid[r][c+1]!=null){
+                    if(c<grid[0].length-1 && grid[r][c+1]!=null){
                         if(grid[r][c+1].equals("M")){
-                            if(grid[r][c+2]!=null){
+                            if(c<grid[0].length-2 &&grid[r][c+2]!=null){
                                 if(grid[r][c+2].equals("A")){
-                                    if(grid[r][c+3]!=null){
+                                    if(c<grid[0].length-3 &&grid[r][c+3]!=null){
                                         if(grid[r][c+3].equals("S")){
                                             System.out.println(grid[r][c]+grid[r][c+1]+grid[r][c+2]+grid[r][c+3]);
                                             total++;
@@ -52,9 +52,9 @@ public class Day4 {
                     //left
                     if( c > 0 && grid[r][c-1]!=null){
                         if(grid[r][c-1].equals("M")){
-                            if(c > 2 && grid[r][c-2]!=null){
+                            if(c > 1 && grid[r][c-2]!=null){
                                 if(grid[r][c-2].equals("A")){
-                                    if(c > 3 && grid[r][c-3]!=null){
+                                    if(c > 2 && grid[r][c-3]!=null){
                                         if(grid[r][c-3].equals("S")){
                                             System.out.println(grid[r][c]+grid[r][c-1]+grid[r][c-2]+grid[r][c-3]);
                                             total++;
@@ -68,9 +68,9 @@ public class Day4 {
                     //up
                     if( r > 0 && grid[r-1][c]!=null){
                         if(grid[r-1][c].equals("M")){
-                            if(r > 2 && grid[r-2][c]!=null){
+                            if(r > 1 && grid[r-2][c]!=null){
                                 if(grid[r-2][c].equals("A")){
-                                    if(r > 3 && grid[r-3][c]!=null){
+                                    if(r > 2 && grid[r-3][c]!=null){
                                         if(grid[r-3][c].equals("S")){
                                             System.out.println(grid[r][c]+grid[r-1][c]+grid[r-2][c]+grid[r-3][c]);
                                             total++;
@@ -98,11 +98,11 @@ public class Day4 {
                     }
 
                     //down-right
-                    if(r < grid.length-1 && grid[r+1][c+1]!=null){
+                    if(c<grid[0].length-1 && r < grid.length-1 && grid[r+1][c+1]!=null){
                         if(grid[r+1][c+1].equals("M")){
-                            if(r < grid.length-2 && grid[r+2][c+2]!=null){
+                            if(c<grid[0].length-2 && r < grid.length-2 && grid[r+2][c+2]!=null){
                                 if(grid[r+2][c+2].equals("A")){
-                                    if(r < grid.length-3 && grid[r+3][c+3]!=null){
+                                    if(c< grid[0].length-3 && r < grid.length-3 && grid[r+3][c+3]!=null){
                                         if(grid[r+3][c+3].equals("S")){
                                             System.out.println(grid[r][c]+grid[r+1][c+1]+grid[r+2][c+2]+grid[r+3][c+3]);
                                             total++;
@@ -116,9 +116,9 @@ public class Day4 {
                     //down-left
                     if(c>0 && r < grid.length-1 && grid[r+1][c-1]!=null){
                         if(grid[r+1][c-1].equals("M")){
-                            if(c>1 && r < grid.length-2 && grid[r+2][c+2]!=null){
+                            if(c>1 && r < grid.length-2 && grid[r+2][c-2]!=null){
                                 if(grid[r+2][c-2].equals("A")){
-                                    if(c>2 && r < grid.length-3 && grid[r+3][c+3]!=null){
+                                    if(c>2 && r < grid.length-3 && grid[r+3][c-3]!=null){
                                         if(grid[r+3][c-3].equals("S")){
                                             System.out.println(grid[r][c]+grid[r+1][c-1]+grid[r+2][c-2]+grid[r+3][c-3]);
                                             total++;
