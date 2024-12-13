@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Day2 {
@@ -10,9 +11,13 @@ public class Day2 {
         int columns = fileData.get(0).length();
         String[][] grid = new String[rows][columns];
 
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                grid[r][c] = fileData.get(r).substring(c, c+1);
+        for(int i = 0; i< fileData.size(); i++){
+            String string = (fileData.get(i));
+            String[] words = string.split(" ");
+            int k = 0;
+            for (String word : words) {
+                grid[i][k] = word;
+                k++;
             }
         }
 
@@ -20,8 +25,8 @@ public class Day2 {
 
         for (int r = 0; r < grid.length; r++) {
             boolean safe = true;
-            for (int c = 0; c < grid[0].length-1; c++) {
-                if((Math.abs(Integer.parseInt(grid[r][c])-Integer.parseInt(grid[r][c+1])))>=3){
+            for (int c = 0; c < grid[r].length; c++) {
+                if((Math.abs(Integer.parseInt(grid[r][c])-Integer.parseInt(grid[r][c+1])))>3){
                     safe = false;
                 }
             }
@@ -48,5 +53,7 @@ public class Day2 {
             return fileData;
         }
     }
+
+
 }
 
