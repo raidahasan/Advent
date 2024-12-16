@@ -8,12 +8,12 @@ public class Day2 {
     public static void main(String[] args) {
         ArrayList<String> fileData = getFileData("src/InputFile");
         int rows = fileData.size();
-        int columns = fileData.get(0).length();
-        String[][] grid = new String[rows][columns];
+        String[][] grid = new String[rows][];
 
         for(int i = 0; i< fileData.size(); i++){
             String string = (fileData.get(i));
             String[] words = string.split(" ");
+            grid[i] = new String[words.length];
             int k = 0;
             for (String word : words) {
                 grid[i][k] = word;
@@ -25,13 +25,26 @@ public class Day2 {
 
         for (int r = 0; r < grid.length; r++) {
             boolean safe = true;
-            for (int c = 0; c < grid[r].length; c++) {
-                if((Math.abs(Integer.parseInt(grid[r][c])-Integer.parseInt(grid[r][c+1])))>3){
-                    safe = false;
+            boolean increasing = false;
+            boolean decreasing = false;
+            for (int c = 0; c < grid[r].length-1; c++) {
+//                    if ((Math.abs(Integer.parseInt(grid[r][c]) - Integer.parseInt(grid[r][c + 1]))) > 3) {
+//                        safe = false;
+//                    }
+                if(true){
+                    if(Integer.parseInt(grid[r][c]) - Integer.parseInt(grid[r][c + 1])>=-3 && Integer.parseInt(grid[r][c]) - Integer.parseInt(grid[r][c + 1])<=-1){
+                        decreasing = true;
+                    }else if(Integer.parseInt(grid[r][c]) - Integer.parseInt(grid[r][c + 1])<=3 && Integer.parseInt(grid[r][c]) - Integer.parseInt(grid[r][c + 1])>=1){
+                        increasing = true;
+                    }else{
+                        safe = false;
+                    }
                 }
             }
-            if(safe){
+            boolean sameDir = (decreasing && !increasing) || (increasing && !decreasing);
+            if(safe && sameDir){
                 total++;
+                System.out.println(Arrays.stream(grid[r]).toList());
             }
         }
         System.out.println(total);
@@ -56,4 +69,3 @@ public class Day2 {
 
 
 }
-
